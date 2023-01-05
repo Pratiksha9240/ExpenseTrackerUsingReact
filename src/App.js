@@ -1,9 +1,11 @@
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 import "./App.css";
+import { useState } from "react";
 
 const App = () => {
-  const expenses = [
+
+  const INITIAL_EXPENSES = [
     {
       id: 1,
       expenseTitle: "Car Insurance",
@@ -34,9 +36,17 @@ const App = () => {
     },
   ];
 
+  const [expenses,setExpenses] = useState(INITIAL_EXPENSES);
+
+  const addExpenseHandler = (expense) => {
+    setExpenses((prevExpense) => {
+      return [expense,...prevExpense];
+    });
+  }
+
   return (
     <>
-      <NewExpense/>
+      <NewExpense onAddExpense = {addExpenseHandler}/>
       <Expenses items = {expenses}></Expenses>
     </>
   );
