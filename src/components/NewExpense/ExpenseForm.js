@@ -31,14 +31,14 @@ const ExpenseForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     const expenseObj = {
-        id : enteredId,
+        id : +enteredId,
         expenseTitle : enteredTitle,
-        expenseAmount : enteredAmount,
+        expenseAmount : +enteredAmount,
         expenseLocation : enteredLocation,
         expenseDate : new Date(enteredDate)
     }
 
-    // console.log(expenseObj);
+    console.log(expenseObj);
     props.onSaveExpenseData(expenseObj);
     setEnteredTitle('');
     setEnteredAmount('');
